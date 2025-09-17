@@ -43,13 +43,41 @@ public class DLList implements List {
 	@Override
 	public void add(String e, int i) {
 		// find the node previous to i
-		// then adjust pointers (tip: don't lose track of next)
+		DLNode current = head;
+		int nd = 0;
+		while (nd < i-1) {
+			current = current.next();
+			nd += 1;
+		} // end of loop
+
+		// current is now pointing at the previous to new node
+		// 1 new node
+		DLNode newNode = new DLNode(e);
+		// 2 new next
+		newNode.setNext(current.next());
+		// 3 old next
+		current.setNext(newNode);
+		count += 1;
 	}
 	
+	/**
+	 * Removing the last element, aka pop
+	 * 
+	 * Thanks Michael, Aom, Christ, ...
+	 */
 	@Override
 	public void rem() {
-		// TODO Auto-generated method stub
-		
+		if (head == null)
+			return;
+		count -= 1;
+		int i = 1;
+		DLNode curr = head;
+		while(i < count) {
+			curr = curr.next();
+			i += 1;
+		} // loop end
+		// should be pointing to next to last element
+		curr.setNext(null);
 	}
 
 
@@ -60,4 +88,17 @@ public class DLList implements List {
 		
 	}
 
+	public void printList() {
+		if (head == null) {
+			System.out.println("-empty-");
+			return;
+		}
+		int counter = 0;
+		DLNode curr = head;
+		while (curr != null) {
+			System.out.print(curr.dat() + " ");
+			curr = curr.next();
+		}
+		System.out.println();
+	}
 }
