@@ -12,6 +12,13 @@ public class TranslationMain {
 	
 	private void runProgram() {
 		// make the tree!
+		
+		AVLTree tree = new AVLTree();
+		
+		tree.add("5");
+		tree.add("9");
+		tree.add("3");
+		tree.add("2");
 	}
 
 	/**

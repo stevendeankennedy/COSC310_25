@@ -1,10 +1,18 @@
 package edu.frostburg.cosc310.proj.translation;
 
 public class AVLNode {
-	private KeyValue data;  // TODO: Currently missing get/set
+//	private KeyValue data;  // TODO: Currently missing get/set
+	private String data; // TODO: ultimately, we need more data
+
 	private AVLNode left;
 	private AVLNode right;
 	private int height;
+	
+	// TODO: Need constructors (empty, and with children)
+	public AVLNode(String eng) // TODO again, finish (VERY IMPORTANT!)
+	{
+		data = eng; // Important: Note that this is only the key until you fix it
+	}
 	
 	public AVLNode left() { // cut off "get" because data structures reasons
 		return left;
@@ -23,5 +31,8 @@ public class AVLNode {
 	}
 	public void setHeight(int height) {
 		this.height = height;
+	}
+	public String getData() {
+		return data;
 	}
 }
