@@ -11,7 +11,8 @@ public class AVLNode {
 	// TODO: Need constructors (empty, and with children)
 	public AVLNode(String eng) // TODO again, finish (VERY IMPORTANT!)
 	{
-		data = eng; // Important: Note that this is only the key until you fix it
+		this.height = 1;
+		this.data = eng; // Important: Note that this is only the key until you fix it
 	}
 	
 	public AVLNode left() { // cut off "get" because data structures reasons

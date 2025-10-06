@@ -45,15 +45,26 @@ public class AVLTree {
 		int balance = getBalance(root);
 		
 		// note that when adding, need to do some comparison
-		if (balance > 1) { // TODO: 
+		if (balance > 1) { // TODO: Check condition
 			return rightRotation(root);
 		}
 		return root;
 	}
 	
-	private AVLNode rightRotation(AVLNode root) {
+	private AVLNode rightRotation(AVLNode c) {
+		// setup
+		AVLNode b = c.left();
+		AVLNode z = b.right();
 		
-		return root; //TODO: CHANGE THIS
+		// rotate
+		b.setRight(c);
+		c.setLeft(z);
+		
+		// update heights
+		b.setHeight(1 + Math.max(getHeight(b.left()), getHeight(b.right())));
+		c.setHeight(1 + Math.max(getHeight(c.left()), getHeight(c.right())));
+		
+		return b; 
 	}
 	
 	/**
@@ -78,7 +89,34 @@ public class AVLTree {
 		return root.height();
 	}
 	
+	public void printInorder() {
+		printInorder(root);
+	}
 	
+	// Just print keys...
+	private void printInorder(AVLNode root) {
+		if (root == null) {
+			return;
+		}
+		//LVR
+		printInorder(root.left());
+		System.out.print(root.getData() + " ");
+		printInorder(root.right());
+	}
+	
+	private void printPreorder() {
+		if (root == null) {
+			return;
+		}
+		//VLR
+		System.out.print(root.getData() + " ");
+		printInorder(root.left());
+		printInorder(root.right());
+	}
+	
+	public void printPostorder() {
+		
+	}
 	
 	
 	public AVLNode root() {
